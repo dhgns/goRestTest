@@ -18,16 +18,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        Network.shared.getUsers(completed: { users in
+            print("estoy en una funcion definida en linea")
+            print("me ejecuto de forma asíncrona, es decir, no se cuando")
+        })
         
-        Network.shared.getUsers()
     
-        Network.shared.postUser()
         
-        Network.shared.putUser()
-        
-        Network.shared.patchUser()
-        
-        Network.shared.deleteUser()
     }
 
 

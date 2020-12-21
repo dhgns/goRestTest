@@ -17,7 +17,7 @@ class Network {
 
 protocol GoRestAPI {
     
-    func getUsers()
+    func getUsers(completed: @escaping (_ users: [String]) -> Void)
     
     func postUser()
     
@@ -35,28 +35,54 @@ extension Network: GoRestAPI {
     static let ACCESS_TOKEN = "*****"
     
     //TODO
-    func getUsers() {
-        <#code#>
+    func getUsers(completed: @escaping (_ users: [String]) -> Void) {
+        
+        let usersURL = "https://gorest.co.in/public-api/users"
+        
+        URLSession.shared.dataTask(with: URL(string: usersURL)!){
+            data, response, error in
+            
+            if(error != nil) {
+                print(error)
+            }else{
+                debugPrint(response)
+
+                //TODO
+                //1 Parsear la respuesta
+                //Endode -->    : JSONEncoder
+                //Decode <--    : JSONDecoder
+                
+                //2 Le pasamos la respuesta deserializada
+                completed(["usuario1", "usuario2"])
+            }
+            
+        }.resume()
+        
     }
     
     //TODO
     func postUser() {
-        <#code#>
+        
     }
     
     //TODO
     func patchUser() {
-        <#code#>
+        
     }
     
     //TODO
     func putUser() {
-        <#code#>
+        
     }
     
     //TODO
     func deleteUser() {
-        <#code#>
+        
+        
     }
     
+    
+    
 }
+
+
