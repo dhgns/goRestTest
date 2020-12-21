@@ -36,7 +36,7 @@ extension Network: GoRestAPI {
     
     //TODO
     func getUsers(completed: @escaping (_ users: [String]) -> Void) {
-        
+    
         let usersURL = "https://gorest.co.in/public-api/users"
         
         URLSession.shared.dataTask(with: URL(string: usersURL)!){
